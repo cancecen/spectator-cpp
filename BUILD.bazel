@@ -25,6 +25,20 @@ cc_library(
     ],
 )
 
+cc_binary(
+    name = "gen_valid_chars",
+    srcs = ["tools/gen_valid_chars.cc"],
+    visibility = ["//visibility:public"],
+)
+
+genrule(
+    name = "generate_valid_chars_inc",
+    srcs = [":gen_valid_chars"],  # Dependency on the gen_valid_chars executable
+    outs = ["spectator/valid_chars.inc"],
+    cmd = "$(location :gen_valid_chars) > $(OUTS)",
+    visibility = ["//visibility:public"],
+)
+
 cc_test(
     name = "spectator_test",
     srcs = glob([
