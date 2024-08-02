@@ -14,6 +14,7 @@ cc_library(
         "spectator/registry.h",
         "spectator/stateful_meters.h",
         "spectator/stateless_meters.h",
+        "spectator/valid_chars.inc",
     ],
     visibility = ["//visibility:public"],
     deps = [
@@ -24,20 +25,6 @@ cc_library(
         "@com_google_absl//absl/strings",
         ":generate_valid_chars_inc",
     ],
-)
-
-cc_binary(
-    name = "gen_valid_chars",
-    srcs = ["tools/gen_valid_chars.cc"],
-    visibility = ["//visibility:public"],
-)
-
-genrule(
-    name = "generate_valid_chars_inc",
-    srcs = [":gen_valid_chars"],  # Dependency on the gen_valid_chars executable
-    outs = ["spectator/valid_chars.inc"],
-    cmd = "$(location :gen_valid_chars) > $(OUTS)",
-    visibility = ["//visibility:public"],
 )
 
 cc_test(

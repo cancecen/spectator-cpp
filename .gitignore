@@ -3,4 +3,3 @@
 .vscode/
 bazel-*
 build-*
-spectator/valid_chars.inc
