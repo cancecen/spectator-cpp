@@ -23,7 +23,6 @@ cc_library(
         "@com_github_gabime_spdlog//:spdlog",
         "@com_google_absl//absl/container:flat_hash_map",
         "@com_google_absl//absl/strings",
-        ":generate_valid_chars_inc",
     ],
 )
 
